@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1637596747484.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3327088533",
+    "id" : "B9808C6B",
+    "lastKnownWriteTime" : 1637596831,
+    "last_content_update" : 1637596831359,
+    "path" : "~/GitHub/pkghw4g4/pkghw4g4/R/area.R",
+    "project_path" : "R/area.R",
+    "properties" : {
+        "cursorPosition" : "61,0",
+        "scrollLine" : "51"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
