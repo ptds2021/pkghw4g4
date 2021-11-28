@@ -3,3 +3,4 @@
 export(estimate_area)
 export(plot.area)
 export(point_constraint)
+export(runDemo)
