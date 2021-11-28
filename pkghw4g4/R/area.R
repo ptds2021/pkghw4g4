@@ -1,3 +1,18 @@
+#' @title Define the contstraint of points
+#'
+#' @description This function is only necessary for the function estimate_area() because it defines the points
+#' that are inside of the boundaries and than will be used to calculate the area of the shape
+#' @return True or False
+#' @author Özgür Aydemir, Sophie La Gennusa, Louis del Perugia, Daniel Szenes, Francesca Darino
+#' @export point_constraint
+
+point_constraint <- function(x) {
+  x[1]^2 + x[2]^2 > 0.5^2 &
+    (x[1] - 0.5) ^ 2 + (x[2] - 0.5) ^ 2 < (0.5 ^ 2) &
+   x[2] > x[1] - 0.5
+}
+
+
 #' @title Computation of Specific area and Plotting The Coordinates
 #'
 #' @description Provide an approximation of the area of a Shape by using Monte Carlo Approach, with the function estimate_area(),
@@ -12,16 +27,9 @@
 #'      \item{points}{Coordinates of simulated points}
 #' }
 #' @author Özgür Aydemir, Sophie La Gennusa, Louis del Perugia, Daniel Szenes, Francesca Darino
-#' @export
 #' @examples
 #' estimate_area(B = 500, seed = 100)
-
-
-point_constraint <- function(x) {
-  x[1]^2 + x[2]^2 > 0.5^2 &
-    (x[1] - 0.5) ^ 2 + (x[2] - 0.5) ^ 2 < (0.5 ^ 2) &
-    x[2] > x[1] - 0.5
-}
+#' @export estimate_area
 
 estimate_area <- function(B = 5000, seed = 10){
 
@@ -57,14 +65,28 @@ estimate_area <- function(B = 5000, seed = 10){
   )
 
   return(rval)
-
 }
+
+
+#' @title Plotting all the points generated inside the constraints
+#'
+#' @description Provides a graph with all the points generated inside the boundaries. It makes senses only when the output of a function
+#' has an object named as "points". We are basically subsetting the output of estimate_area() with points as one of the output of
+#' estimate_area() is called "points"
+#' @return It basically return a graph with all the points inside the boundaries
+#' @author Özgür Aydemir, Sophie La Gennusa, Louis del Perugia, Daniel Szenes, Francesca Darino
+#' @examples
+#' plot.area(estimate_area(B = 500, seed = 25))
+#' @export plot.area
 
 
 plot.area <- function(x){
   points <- subset(x[["points"]])
 
+  points <- dplyr::filter(points, inside == TRUE)
+
   plot(points)
 }
+
 
 
